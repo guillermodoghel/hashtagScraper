@@ -9,10 +9,11 @@ import (
 
 var myClient = &http.Client{Timeout: 10 * time.Second}
 
-func GetJSON(url string) []byte {
+//GetJSON makes a simple Get Request, returns a String with a JSON
+func GetJSON(url string) string {
 
 	spaceClient := http.Client{
-		Timeout: time.Second * 10, // Maximum of 2 secs
+		Timeout: time.Second * 10, // Maximum of 10 secs
 	}
 
 	req, err := http.NewRequest(http.MethodGet, url, nil)
@@ -30,5 +31,5 @@ func GetJSON(url string) []byte {
 		log.Fatal(readErr)
 	}
 
-	return body
+	return string(body[:])
 }

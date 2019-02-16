@@ -8,12 +8,13 @@ import (
 	"github.com/tidwall/gjson"
 )
 
+//GetInstagram returns []Post by hashtag from Instagram
 func GetInstagram(hashtag string) []Post {
 	url := fmt.Sprintf("https://www.instagram.com/explore/tags/%s/?__a=1", hashtag)
 
-	result := utils.GetJSON(url)
-	json := string(result[:])
-	value := gjson.GetMany(json, "graphql.hashtag.edge_hashtag_to_media.edges.#.node.thumbnail_src",
+	jsonResponse := utils.GetJSON(url)
+
+	value := gjson.GetMany(jsonResponse, "graphql.hashtag.edge_hashtag_to_media.edges.#.node.thumbnail_src",
 		"graphql.hashtag.edge_hashtag_to_media.edges.#.node.edge_media_to_caption.edges.0.node.text")
 
 	var response []Post
