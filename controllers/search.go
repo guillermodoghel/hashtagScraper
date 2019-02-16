@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	. "github.com/guillermodoghel/example/models"
-	"github.com/guillermodoghel/example/services"
+	. "github.com/guillermodoghel/hashtagScraper/models"
+	"github.com/guillermodoghel/hashtagScraper/services"
 )
 
 func GetContent(c *gin.Context) {

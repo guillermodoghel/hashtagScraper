@@ -3,8 +3,8 @@ package services
 import (
 	"fmt"
 
-	. "github.com/guillermodoghel/example/models"
-	"github.com/guillermodoghel/example/utils"
+	. "github.com/guillermodoghel/hashtagScraper/models"
+	"github.com/guillermodoghel/hashtagScraper/utils"
 	"github.com/tidwall/gjson"
 )
 

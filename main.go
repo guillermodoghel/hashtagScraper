@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/guillermodoghel/example/controllers"
+	"github.com/guillermodoghel/hashtagScraper/controllers"
 )
 
 func main() {
