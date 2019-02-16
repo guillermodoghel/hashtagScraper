@@ -10,7 +10,7 @@ On current version we only support instagram. Next: twitter, facebook, and linke
  - Clone project 
  - Import libraries and stuff (no clue on how
    :p) 
-   Run `go run main.go`
+ - Run `go run main.go`
 
 Then, you can just API call it doing a
 
