@@ -25,6 +25,9 @@ func GetTwitter(hashtag string) []Post {
 		if len(twit.Entities.Media) >= 1 {
 			post := Post{URL: twit.Entities.Media[0].MediaURLHttps, Text: twit.Text}
 			response = append(response, post)
+		} else {
+			post := Post{URL: "", Text: twit.Text}
+			response = append(response, post)
 		}
 	}
 
