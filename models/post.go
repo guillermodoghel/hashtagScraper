@@ -4,4 +4,5 @@ package models
 type Post struct {
 	URL  string
 	Text string
+	Hash string
 }
