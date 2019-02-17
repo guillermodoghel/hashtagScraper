@@ -28,6 +28,7 @@ for example `http://localhost:8080/search/pokemon`
               "Text": "anyone know the song name?\n⚫\n⚫\n⚫\n#tiktok #tiktokmemes #epic #stolenmemes #meme #hitormiss #pewdiepie #christmas #tseries #furry #dankmemes #dank #funny #iwannabetracer #naruto #thanos #rainbowsixsiege #pokemon #sal #rockefellerstreet",
               "Hash": "ba10bc66b83850454b348dc0203a71ea9a76d751772841db04e1a3d2a53d92b3"
             }
+	    ... <-aprox 100 latests/more trendy with this hashtag
           ]
         },
         {
@@ -38,6 +39,7 @@ for example `http://localhost:8080/search/pokemon`
               "Text": "I did watch sailor moon but I wasnt as into it as I was, like, Pokemon and Cardcaptor Sakura lol",
               "Hash": "6deea4131b5a1e83c7c96a43545d26f162df7bf6aca2546ebea60559f46df610"
             }
+	    ... <-aprox 100 latests/more trendy with this hashtag
           ]
         }
       ]
