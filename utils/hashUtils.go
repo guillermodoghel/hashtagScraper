@@ -5,11 +5,11 @@ import (
 	"crypto/sha256"
 	"fmt"
 
-	. "github.com/guillermodoghel/hashtagScraper/models"
+	"github.com/guillermodoghel/hashtagScraper/models"
 )
 
 //SignPosts sign each post of an array with a sha256 hash
-func SignPosts(posts []Post) []Post {
+func SignPosts(posts []models.Post) []models.Post {
 
 	for index, post := range posts {
 		h := sha256.New()
