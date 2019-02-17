@@ -2,16 +2,16 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	. "github.com/guillermodoghel/hashtagScraper/models"
+	"github.com/guillermodoghel/hashtagScraper/models"
 	"github.com/guillermodoghel/hashtagScraper/services"
 )
 
+//GetContent process the request and call the corresponding services
 func GetContent(c *gin.Context) {
 	hashtag := c.Param("hashtag")
 
-	instagramFuture := make(chan []Post)
-	twitterFuture := make(chan []Post)
-	facebookFuture := make(chan []Post)
+	instagramFuture := make(chan []models.Post)
+	twitterFuture := make(chan []models.Post)
 
 	go func() {
 		instagramFuture <- services.GetInstagram(hashtag)
@@ -19,12 +19,9 @@ func GetContent(c *gin.Context) {
 	go func() {
 		twitterFuture <- services.GetTwitter(hashtag)
 	}()
-	go func() {
-		facebookFuture <- services.GetFacebook(hashtag)
-	}()
+
 	c.JSON(200, gin.H{
-		"result": []NetworkResponse{
-			{Name: "facebook", Posts: <-facebookFuture},
+		"result": []models.NetworkResponse{
 			{Name: "instagram", Posts: <-instagramFuture},
 			{Name: "twitter", Posts: <-twitterFuture},
 		},
