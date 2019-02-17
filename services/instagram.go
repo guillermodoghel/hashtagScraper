@@ -19,13 +19,10 @@ func GetInstagram(hashtag string) []Post {
 
 	var response []Post
 	textArrays := value[1].Array()
-	for index, subelement := range value[0].Array() {
-		println(subelement.String())
 
+	for index, subelement := range value[0].Array() {
 		post := Post{URL: subelement.String(), Text: textArrays[index].String()}
 		response = append(response, post)
-
 	}
-
 	return response
 }
