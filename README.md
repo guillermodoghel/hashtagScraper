@@ -18,38 +18,33 @@ Then, you can just API call it doing a
 
 for example `http://localhost:8080/search/pokemon`
 
-
     {
-	    "result": [
-		    {
-				"Name": "instagram",
-				"Posts": [
-					{							
-                    	"URL": "https://instagram.faep8-2.fna.fbcdn.net/vp/3ffbed111ee726ea92c2e02addf765b8/5CE226C7/t51.2885-15/sh0.08/e35/s640x640/50618298_353111202197343_1404184570313895034_n.jpg?_nc_ht=instagram.faep8-2.fna.fbcdn.net",
-						"Text": "Even though we are all sold out of the 1V1 and the 2V2 tournament entries. There are still a few Spectator tickets available, which come with an unlimited Gameplay card to the Dave and Buster's Arcade and also the chance to get added at random to the tournament! These are going fast too! Don’t miss out!\n.\n.\n______________________________________\n@wyd_gaming @wyd_gaming\n.\n.\n______________________________________\n\n#esportsla #laesports #losangelesgamers\n#losangelesesports #hollywoodesports\n#esports\n#tournamentkingz\n#wyd\n#wydgaming\n#gamersonly #gamer\n#gaming #instagaming #instagamer\n #photooftheday\n#onlinegaming\n#videogameaddict\n#instagame\n#gamerlife\n#smashbros\n#ssb5\n#smashbrosultimate #smash5 \n#pokemon #fortnite #videogamer #inkling #inklinggirl #2days #fun"
-					},
-                    {...},
-                    ...
-				]
-			},
-			{
-				"Name": "twitter",
-				"Posts": [
-					{
-						"URL": "",
-                        "Text": "Pokemon XD Der dunkle Sturm Part 7\n\nhttps://t.co/snCHguZ6EM"
-					},
-					{
-						"URL": "https://pbs.twimg.com/ext_tw_video_thumb/1096565592155398145/pu/img/OUOjHkUf3a2YF-lg.jpg",
-						"Text": "RT @Lewchube_: yo pokemon x and y were lowkey ahead of their time... https://t.co/RebobmvE1w"
-					},
-		            {...},
-                    ...
-				]		
-			}
-		]
-	}
-
+      "result": [
+        {
+          "Name": "instagram",
+          "Posts": [
+            {
+              "URL": "https://instagram.faep9-2.fna.fbcdn.net/vp/8ecde5141188b9a512b8211e3980218d/5C6C5BD6/t51.2885-15/e35/c30.0.480.480/50822493_119806635774214_5175769181322525196_n.jpg?_nc_ht=instagram.faep9-2.fna.fbcdn.net",
+              "Text": "anyone know the song name?\n⚫\n⚫\n⚫\n#tiktok #tiktokmemes #epic #stolenmemes #meme #hitormiss #pewdiepie #christmas #tseries #furry #dankmemes #dank #funny #iwannabetracer #naruto #thanos #rainbowsixsiege #pokemon #sal #rockefellerstreet",
+              "Hash": "ba10bc66b83850454b348dc0203a71ea9a76d751772841db04e1a3d2a53d92b3"
+            }
+	    ... <-aprox 100 latests/more trendy with this hashtag
+          ]
+        },
+        {
+          "Name": "twitter",
+          "Posts": [
+            {
+              "URL": "",
+              "Text": "I did watch sailor moon but I wasnt as into it as I was, like, Pokemon and Cardcaptor Sakura lol",
+              "Hash": "6deea4131b5a1e83c7c96a43545d26f162df7bf6aca2546ebea60559f46df610"
+            }
+	    ... <-aprox 100 latests/more trendy with this hashtag
+          ]
+        }
+      ]
+    }
+    
 
 
 
@@ -66,4 +61,3 @@ Parallel
 	[GIN] 2019/02/17 - 01:51:51 | 200 |  2.112491575s |             ::1 | GET      /search/pokemon
 	[GIN] 2019/02/17 - 01:51:54 | 200 |  1.638974595s |             ::1 | GET      /search/pokemon
 	[GIN] 2019/02/17 - 01:51:56 | 200 |  1.731282873s |             ::1 | GET      /search/pokemon
-
