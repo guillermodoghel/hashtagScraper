@@ -48,16 +48,9 @@ for example `http://localhost:8080/search/pokemon`
 
 
 
-#### Local load tests
+#### Now with full paralell scrapping
 
-Series
-
-	[GIN] 2019/02/17 - 01:18:47 | 200 |  3.731495938s |             ::1 | GET      /search/pokemon
-	[GIN] 2019/02/17 - 01:20:11 | 200 |  3.382655464s |             ::1 | GET      /search/pokemon
-	[GIN] 2019/02/17 - 01:20:26 | 200 |  2.349863251s |             ::1 | GET      /search/pokemon
-
-Parallel
-
-	[GIN] 2019/02/17 - 01:51:51 | 200 |  2.112491575s |             ::1 | GET      /search/pokemon
-	[GIN] 2019/02/17 - 01:51:54 | 200 |  1.638974595s |             ::1 | GET      /search/pokemon
-	[GIN] 2019/02/17 - 01:51:56 | 200 |  1.731282873s |             ::1 | GET      /search/pokemon
+  Twitter took 2.468745525s
+  Instagram took 2.551599415s
+  Scrapping took 2.552257732s
+  [GIN] 2019/02/18 - 16:14:33 | 200 |   2.55226692s |             ::1 | GET      /search/pokemon
