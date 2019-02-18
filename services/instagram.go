@@ -21,11 +21,15 @@ func GetInstagram(hashtag string) []Post {
 		"graphql.hashtag.edge_hashtag_to_media.edges.#.node.edge_media_to_caption.edges.0.node.text")
 
 	var response []Post
+	imagesArray := value[0].Array()
 	textArrays := value[1].Array()
 
-	for index, subelement := range value[0].Array() {
-		post := Post{URL: subelement.String(), Text: textArrays[index].String()}
-		response = append(response, post)
+	for index, subelement := range imagesArray {
+		if index < len(textArrays) {
+			post := Post{URL: subelement.String(), Text: textArrays[index].String()}
+			response = append(response, post)
+		}
+
 	}
 	elapsed := time.Since(start)
 	log.Printf("Instagram took %s", elapsed)

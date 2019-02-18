@@ -31,7 +31,6 @@ func GetContent(c *gin.Context) {
 	}()
 
 	go func() {
-
 		tempTwitter := services.GetTwitter(hashtag)
 		utils.SignPosts(&tempTwitter)
 		twitterFuture <- tempTwitter
