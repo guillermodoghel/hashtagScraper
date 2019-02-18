@@ -9,8 +9,8 @@ This app allows you to search by some hashtag, and it returns, images and descri
 On current version we only support instagram and twitter.
 
  - Clone project 
- - Import libraries and stuff (no clue on how
-   :p)
+ - Import libraries and stuff (no clue on how,
+    try following this steps https://golang.org/doc/install and may the force be with you :p)
  - Create at project root level a text file named **settings.properties** , this file will contain your twitter api credentials. The .gitignore is configured to avoid the commit of this file for obvious reasons. (If you search previous commits on this repo you will find one example with voided keys)  It must have the following format:
  
 
