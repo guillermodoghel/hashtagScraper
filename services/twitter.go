@@ -1,6 +1,9 @@
 package services
 
 import (
+	"log"
+	"time"
+
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
 	"github.com/guillermodoghel/hashtagScraper/models"
@@ -9,6 +12,7 @@ import (
 
 //GetTwitter returns []Post by hashtag from twitter
 func GetTwitter(hashtag string) []models.Post {
+	start := time.Now()
 
 	config := oauth1.NewConfig(utils.GetProperty("twitterConsumerKey"), utils.GetProperty("twitterConsumerSecret"))
 	token := oauth1.NewToken(utils.GetProperty("twitterAccessToken"), utils.GetProperty("twitterAccessSecret"))
@@ -30,6 +34,9 @@ func GetTwitter(hashtag string) []models.Post {
 			response = append(response, post)
 		}
 	}
+
+	elapsed := time.Since(start)
+	log.Printf("Twitter took %s", elapsed)
 
 	return response
 }

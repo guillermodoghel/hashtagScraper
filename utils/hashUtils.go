@@ -5,13 +5,12 @@ import (
 	"crypto/sha256"
 	"fmt"
 
-	"github.com/guillermodoghel/hashtagScraper/models"
+	. "github.com/guillermodoghel/hashtagScraper/models"
 )
 
 //SignPosts sign each post of an array with a sha256 hash
-func SignPosts(posts []models.Post) []models.Post {
-
-	for index, post := range posts {
+func SignPosts(posts *[]Post) {
+	for index, post := range *posts {
 		h := sha256.New()
 		var buffer bytes.Buffer
 		buffer.WriteString(post.URL)
@@ -19,9 +18,6 @@ func SignPosts(posts []models.Post) []models.Post {
 		h.Write([]byte(buffer.String()))
 		bs := h.Sum(nil)
 		post.Hash = fmt.Sprintf("%x", bs)
-		posts[index] = post
-
+		(*posts)[index] = post
 	}
-	return posts
-
 }
