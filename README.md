@@ -14,10 +14,10 @@ On current version we only support instagram and twitter.
  - Create at project root level a text file named **settings.properties** , this file will contain your twitter api credentials. The .gitignore is configured to avoid the commit of this file for obvious reasons. (If you search previous commits on this repo you will find one example with voided keys)  It must have the following format:
  
 
->     > twitterConsumerKey = 123asdf
->     > twitterConsumerSecret = 123asdf
->     > twitterAccessToken = 123asdf 
->     > twitterAccessSecret = 123asdf
+>      twitterConsumerKey = 123asdf
+>      twitterConsumerSecret = 123asdf
+>      twitterAccessToken = 123asdf 
+>      twitterAccessSecret = 123asdf
 
  
  - Now you are ready to go, just run `go run main.go`
