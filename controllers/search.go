@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/guillermodoghel/hashtagScraper/models"
 	. "github.com/guillermodoghel/hashtagScraper/models"
 	"github.com/guillermodoghel/hashtagScraper/services"
 	"github.com/guillermodoghel/hashtagScraper/utils"
@@ -44,7 +43,7 @@ func GetContent(c *gin.Context) {
 	}()
 
 	c.JSON(200, gin.H{
-		"result": []models.NetworkResponse{
+		"result": []NetworkResponse{
 			{Name: "instagram", Posts: <-instagramFuture},
 			{Name: "twitter", Posts: <-twitterFuture},
 		},
