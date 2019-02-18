@@ -47,10 +47,10 @@ for example `http://localhost:8080/search/pokemon`
     
 
 
+#### Now with full parallel scrapping
 
-#### Now with full paralell scrapping
+      Twitter took 2.468745525s
+      Instagram took 2.551599415s
+      Scrapping took 2.552257732s
+      [GIN] 2019/02/18 - 16:14:33 | 200 |   2.55226692s |             ::1 | GET      /search/pokemon
 
-  Twitter took 2.468745525s
-  Instagram took 2.551599415s
-  Scrapping took 2.552257732s
-  [GIN] 2019/02/18 - 16:14:33 | 200 |   2.55226692s |             ::1 | GET      /search/pokemon
