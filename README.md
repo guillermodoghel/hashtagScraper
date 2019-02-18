@@ -9,8 +9,17 @@ On current version we only support instagram and twitter.
 
  - Clone project 
  - Import libraries and stuff (no clue on how
-   :p) 
- - Run `go run main.go`
+   :p)
+ - Create at project root level a text file named **settings.properties** , this file will contain your twitter api credentials. The .gitignore is configured to avoid the commit of this file for obvious reasons. (If you search previous commits on this repo you will find one example with voided keys)  It must have the following format:
+ 
+
+    > twitterConsumerKey = 123asdf 
+    > twitterConsumerSecret = 123asdf
+    > twitterAccessToken = 123asdf 
+    > twitterAccessSecret = 123asdf
+
+ 
+ - Now you are ready to go, just run `go run main.go`
 
 Then, you can just API call it doing a
 
@@ -53,4 +62,5 @@ for example `http://localhost:8080/search/pokemon`
       Instagram took 2.551599415s
       Scrapping took 2.552257732s
       [GIN] 2019/02/18 - 16:14:33 | 200 |   2.55226692s |             ::1 | GET      /search/pokemon
+
 
