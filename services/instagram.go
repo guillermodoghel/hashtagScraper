@@ -8,6 +8,7 @@ import (
 	. "github.com/guillermodoghel/hashtagScraper/models"
 	"github.com/guillermodoghel/hashtagScraper/utils"
 	"github.com/tidwall/gjson"
+	"gopkg.in/ahmdrz/goinsta.v2"
 )
 
 //GetInstagram returns []Post by hashtag from Instagram
@@ -34,5 +35,33 @@ func GetInstagram(hashtag string) []Post {
 	elapsed := time.Since(start)
 	log.Printf("Instagram took %s", elapsed)
 
+	return response
+}
+
+func GetInstagramStories(hashtag string) []Post {
+	start := time.Now()
+
+	inst := goinsta.New(utils.GetProperty("instagramAccount"), utils.GetProperty("instagramPassword"))
+
+	if err := inst.Login(); err != nil {
+		return nil
+	}
+
+	inst.Login()
+	h := inst.NewHashtag(hashtag)
+	stories, err := h.Stories()
+
+	if err != nil {
+		return nil
+	}
+	var response []Post
+	for _, item := range stories.Items {
+		if len(item.Images.Versions) != 0 {
+			post := Post{URL: item.Images.Versions[0].URL}
+			response = append(response, post)
+		}
+	}
+	elapsed := time.Since(start)
+	log.Printf("Instagram stories took %s", elapsed)
 	return response
 }

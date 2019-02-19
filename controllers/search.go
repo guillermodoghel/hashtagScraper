@@ -18,9 +18,10 @@ func GetContent(c *gin.Context) {
 
 	instagramFuture := make(chan []Post)
 	twitterFuture := make(chan []Post)
+	instagramStoriesFutures := make(chan []Post)
 
 	wg := sync.WaitGroup{}
-	wg.Add(2)
+	wg.Add(3)
 
 	go func() {
 		tempInstagram := services.GetInstagram(hashtag)
@@ -37,14 +38,23 @@ func GetContent(c *gin.Context) {
 	}()
 
 	go func() {
+		tempInstagramStories := services.GetInstagramStories(hashtag)
+		utils.SignPosts(&tempInstagramStories)
+		instagramStoriesFutures <- tempInstagramStories
+		wg.Done()
+	}()
+
+	go func() {
 		wg.Wait()
 		close(instagramFuture)
 		close(twitterFuture)
+		close(instagramStoriesFutures)
 	}()
 
 	c.JSON(200, gin.H{
 		"result": []NetworkResponse{
 			{Name: "instagram", Posts: <-instagramFuture},
+			{Name: "instagram_stories", Posts: <-instagramStoriesFutures},
 			{Name: "twitter", Posts: <-twitterFuture},
 		},
 	})
