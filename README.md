@@ -5,6 +5,7 @@
 <img 
     src="https://i.imgur.com/LAz2B0z.png" 
      height="120">
+![technology Go](https://img.shields.io/badge/technology-go-blue.svg)
 <br>
 </p>
 
