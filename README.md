@@ -8,6 +8,8 @@
 <br>
 </p>
 
+![technology Go](https://img.shields.io/badge/technology-go-blue.svg)
+
 # hashtagScraper 
 
 
@@ -18,17 +20,7 @@ On current version we only support instagram and twitter.
  - Clone project 
  - Import libraries and stuff (no clue on how,
     try following this steps https://golang.org/doc/install and may the force be with you :p)
- - Create at project root level a text file named **settings.properties** , this file will contain your twitter api credentials. The .gitignore is configured to avoid the commit of this file for obvious reasons. (If you search previous commits on this repo you will find one example with voided keys)  It must have the following format:
- 
-
->      twitterConsumerKey = 123asdf
->      twitterConsumerSecret = 123asdf
->      twitterAccessToken = 123asdf 
->      twitterAccessSecret = 123asdf
->      instagramAccount = asupercoolinstagram
->      instagramPassword = 123asda
-
- 
+ - Edit **settings.properties** , this file will contain your twitter api credentials and your instagram account login data. 
  - Now you are ready to go, just run `go run main.go`
 
 Then, you can just API call it doing a
