@@ -9,8 +9,9 @@ import (
 
 func main() {
 	fmt.Println("Hello, 世界")
-	r := gin.Default()
 
+	r := gin.Default()
+	r.Static("/www", "./www")
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
@@ -18,6 +19,7 @@ func main() {
 	})
 
 	r.GET("/search/:hashtag", controllers.GetContent)
+	r.GET("/stream/:hashtag", controllers.StreamContent)
 
 	r.Run()
 }

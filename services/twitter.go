@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -25,12 +26,16 @@ func GetTwitter(hashtag string) []models.Post {
 	})
 	var response []models.Post
 	for _, twit := range search.Statuses {
+		t, err := time.Parse(time.RubyDate, twit.CreatedAt)
+		if err != nil {
+			fmt.Println(err)
+		}
 
 		if len(twit.Entities.Media) >= 1 {
-			post := models.Post{URL: twit.Entities.Media[0].MediaURLHttps, Text: twit.Text}
+			post := models.Post{URL: twit.Entities.Media[0].MediaURLHttps, Text: twit.Text, Date: int(t.Unix()), Origin: "twitter"}
 			response = append(response, post)
 		} else {
-			post := models.Post{URL: "", Text: twit.Text}
+			post := models.Post{Author: twit.User.ScreenName, URL: "", Text: twit.Text, Date: int(t.Unix()), Origin: "twitter"}
 			response = append(response, post)
 		}
 	}

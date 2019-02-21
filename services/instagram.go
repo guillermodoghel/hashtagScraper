@@ -19,15 +19,19 @@ func GetInstagram(hashtag string) []Post {
 	jsonResponse := utils.GetJSON(url)
 
 	value := gjson.GetMany(jsonResponse, "graphql.hashtag.edge_hashtag_to_media.edges.#.node.thumbnail_src",
-		"graphql.hashtag.edge_hashtag_to_media.edges.#.node.edge_media_to_caption.edges.0.node.text")
+		"graphql.hashtag.edge_hashtag_to_media.edges.#.node.edge_media_to_caption.edges.0.node.text",
+		"graphql.hashtag.edge_hashtag_to_media.edges.#.node.taken_at_timestamp",
+		"graphql.hashtag.edge_hashtag_to_media.edges.#.node.owner.id")
 
 	var response []Post
 	imagesArray := value[0].Array()
 	textArrays := value[1].Array()
+	dates := value[2].Array()
+	names := value[3].Array()
 
 	for index, subelement := range imagesArray {
 		if index < len(textArrays) {
-			post := Post{URL: subelement.String(), Text: textArrays[index].String()}
+			post := Post{Author: names[index].String(), URL: subelement.String(), Text: textArrays[index].String(), Date: int(dates[index].Int()), Origin: "instagram"}
 			response = append(response, post)
 		}
 
@@ -57,7 +61,7 @@ func GetInstagramStories(hashtag string) []Post {
 	var response []Post
 	for _, item := range stories.Items {
 		if len(item.Images.Versions) != 0 {
-			post := Post{URL: item.Images.Versions[0].URL}
+			post := Post{Author: item.User.Username, URL: item.Images.Versions[0].URL, Date: int(item.TakenAt), Origin: "instagram_stories"}
 			response = append(response, post)
 		}
 	}

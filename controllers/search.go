@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"log"
+	"sort"
 	"sync"
 	"time"
 
@@ -16,6 +17,44 @@ func GetContent(c *gin.Context) {
 	start := time.Now()
 	hashtag := c.Param("hashtag")
 
+	instagram, instagramStories, twitter := getShit(hashtag)
+
+	c.JSON(200, gin.H{
+		"result": []NetworkResponse{
+			{Name: "instagram", Posts: instagram},
+			{Name: "instagram_stories", Posts: instagramStories},
+			{Name: "twitter", Posts: twitter},
+		},
+	})
+	elapsed := time.Since(start)
+	log.Printf("Scrapping took %s", elapsed)
+
+}
+
+//GetContent process the request and call the corresponding services
+func StreamContent(c *gin.Context) {
+	start := time.Now()
+	hashtag := c.Param("hashtag")
+
+	instagram, instagramStories, twitter := getShit(hashtag)
+
+	var response []Post
+	response = append(response, instagram...)
+	response = append(response, instagramStories...)
+	response = append(response, twitter...)
+
+	sort.Slice(response, func(i, j int) bool {
+		return response[i].Date < response[j].Date
+	})
+
+	c.JSON(200, gin.H{"result": response})
+
+	elapsed := time.Since(start)
+	log.Printf("Scrapping took %s", elapsed)
+
+}
+
+func getShit(hashtag string) ([]Post, []Post, []Post) {
 	instagramFuture := make(chan []Post)
 	twitterFuture := make(chan []Post)
 	instagramStoriesFutures := make(chan []Post)
@@ -51,14 +90,6 @@ func GetContent(c *gin.Context) {
 		close(instagramStoriesFutures)
 	}()
 
-	c.JSON(200, gin.H{
-		"result": []NetworkResponse{
-			{Name: "instagram", Posts: <-instagramFuture},
-			{Name: "instagram_stories", Posts: <-instagramStoriesFutures},
-			{Name: "twitter", Posts: <-twitterFuture},
-		},
-	})
-	elapsed := time.Since(start)
-	log.Printf("Scrapping took %s", elapsed)
+	return <-instagramFuture, <-instagramStoriesFutures, <-twitterFuture
 
 }

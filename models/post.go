@@ -2,7 +2,10 @@ package models
 
 // Post represents a social media post
 type Post struct {
-	URL  string
-	Text string
-	Hash string
+	Author string
+	URL    string
+	Text   string
+	Date   int
+	Origin string
+	Hash   string
 }
